@@ -1,13 +1,17 @@
 const countVotes = (votes) => {
-    const votesCounted = [];
-    votes.forEach(candidate => {
+    const votesCounted = {};
+    votes.forEach(element => {
         
-        
+        votesCounted[element.candidate] = (votesCounted[element.candidate] || 0) +1;
     });
+    return votesCounted;
 }
 
-const showResults = (/*recibe*/) => {
-    //Code
+const showResults = (result) => {
+    alert("Resultado");
+    for(let candidate in result){
+        alert(`${candidate}: ${result[candidate]} votes`);
+    }
 }
 
 const main = () => {
@@ -19,7 +23,7 @@ const main = () => {
         { candidate: 'Bob' }
     ];
     
-
+    showResults(countVotes(votes));
 }
 
 main();
